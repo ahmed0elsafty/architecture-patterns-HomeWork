@@ -3,6 +3,7 @@ package com.alyndroid.architecturepatternstutorialshomework.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements DivProvider {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        numberViewModel  = new NumberViewModel();
+        numberViewModel = new ViewModelProvider(this).get(NumberViewModel.class);
         numberViewModel.mutableLiveData.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
